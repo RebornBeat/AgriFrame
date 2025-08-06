@@ -84,19 +84,66 @@ Bar 3:                [Pole C]━━━━━━[Pole D]
 
 ### Movement and Actuation Systems
 
-#### Gear Ridge System
+#### Dual-System Architecture: Side Rails vs Top Transit
 
-Each aluminum bar features precision-machined gear teeth on both sides:
-- **Purpose**: Enable tool movement along rows without ground contact
+AgriFrame employs two distinct and independent tool systems that operate at different phases of the agricultural cycle:
+
+**1. Side Gear Ridge System (Manual Setup Phase)**
+- **Purpose**: Heavy ground-preparation tools that require soil contact
+- **Primary Tool**: Plowing attachment
+- **Operation Mode**: Manual placement, automated travel
 - **Specifications**:
-  - Pitch: 20mm standard (adjustable for different speeds)
-  - Depth: 10mm
+  - Pitch: 20mm standard gear teeth
+  - Depth: 10mm engagement
   - Material treatment: Hard anodized for wear resistance
+  - Force capacity: 500+ kg downward pressure
+- **Workflow**:
+  1. Worker places plow tool at row start (one plow can service entire field)
+  2. Plow engages side gears and travels row length autonomously
+  3. Returns to start position
+  4. Worker manually moves to next row
+  5. Process repeats until all rows are plowed
+- **Why Manual**: Plowing is infrequent (seasonal), requires heavy force, and benefits from human judgment about soil conditions
+- **Time Requirements**: One worker can plow 1 hectare in 2-3 hours with single plow
 
-#### Alternative Movement Options
-- **Belt drive system**: For quieter operation
-- **Linear motor rails**: For high-precision applications
-- **Cable-pulley system**: For cost-sensitive deployments
+**2. Top Transit System - Monopoly Snake Configuration (Automated Operations)**
+- **Purpose**: Precision tools for planting, monitoring, maintenance, and harvesting
+- **Tool Types**: Seeders, monitors, sprayers, harvesters, pruners
+- **Operation Mode**: Fully automated with choreographed sequences
+- **Mechanism**: Continuous chain/belt where all tools move in lockstep
+- **Design Implementation**:
+  - Continuous chain loop running along top of each row
+  - Tools attached at fixed positions on chain
+  - Single drive motor per row for synchronized movement
+  - Tools cannot pass each other or change positions
+  - Movement is unidirectional (forward along row, return via sides)
+- **Key Constraints & Advantages**:
+  - Tool sequence must be pre-planned at corner loading station
+  - No collision possible (fixed spacing maintained)
+  - Simplified mechanics (one motor per row)
+  - Deterministic positioning (count chain advances)
+- **Corner Tool Supply Stations**:
+  - Only location where tools can be added/removed/reordered
+  - Automated tool attachment/detachment
+  - Tool cleaning and maintenance station
+  - Storage for unused tools
+- **Speed**: 0.1-0.5 m/s stepped movement
+- **Load Capacity**: 10-30kg per tool (lighter than ground tools)
+
+**Why Two Systems?**
+The separation of ground-contact operations (side system) from above-ground operations (top system) solves several engineering challenges:
+- Different force requirements (500kg for plowing vs 30kg for harvesting)
+- Different frequencies (seasonal plowing vs daily monitoring)
+- Different precision needs (rough soil breaking vs delicate fruit picking)
+- Simplified mechanics (no complex vertical travel mechanisms)
+- Cost optimization (one manual plow vs dozens of automated tools)
+
+#### Movement Coordination
+- **X-Axis**: Along rows (side gears for ground tools, top chain for precision tools)
+- **Y-Axis**: Across rows (only at row ends via outer frame)
+- **Z-Axis**: Vertical positioning via corner hydraulics (whole frame)
+- **Tool-Specific Z**: Individual tool extension (telescoping/pneumatic)
+- **Sequencing Algorithm**: Determines optimal tool order for chain loading
 
 ## 🛠️ Modular Tool System
 
@@ -110,75 +157,90 @@ All tools connect via standardized mounting interface:
 
 ### Tool Categories and Configurations
 
-#### 1. Ground Preparation Tools
-**Plow Attachment**
-- Mounts at row start
-- Automated depth control via hydraulics
-- Width adjustable for different row spacings
-- GPS-guided for precision agriculture
+#### Side-Rail Tools (Manual Setup Phase)
 
-#### 2. Planting Tools
-**Seed Placement Module**
-- Precision spacing control
-- Depth adjustment per crop type
-- Fertilizer integration capability
-- Compatible with seeds, seedlings, and tubers
+**1. Plow Attachment (Primary Ground Preparation)**
+- **Mounting**: Engages with side gear rails
+- **Operation**: Semi-autonomous (manual placement, automated travel)
+- **Features**:
+  - Adjustable depth control (5-30cm)
+  - Variable width settings
+  - Rock detection and avoidance
+  - Auto-return to start position
+  - Self-cleaning mechanisms
+- **Worker Requirement**: 1 person to move between rows
+- **Cost**: ~$500-800 per plow unit
+- **Note**: One plow can service entire field sequentially
 
-#### 3. Maintenance Tools
-**Weeding System**
-- Mechanical or laser-based weed removal
-- Crop detection to avoid damage
-- Adjustable for different growth stages
+**2. Deep Tillage Tools (Specialized Ground Work)**
+- **Purpose**: Breaking hardpan, deep aeration
+- **Operation**: Similar to plow (manual placement between rows)
+- **Use Frequency**: Once per season or less
 
-**Irrigation Delivery**
-- Targeted water delivery
-- Fertilizer injection capability
-- Moisture sensor feedback
+#### Top-Chain Tools (Automated Operational Phase)
 
-#### 4. Harvesting Tools
+All top-chain tools attach to the monopoly snake conveyor system and move in synchronized sequences. These tools never require manual intervention once loaded at corner stations.
 
-**A. Diagonal Ground Tool** (for pineapples, cassava, root vegetables)
+**1. Planting/Seeding Tools**
+- **Mounting**: Fixed position on chain
+- **Features**:
+  - Precision seed placement
+  - Adjustable depth via pneumatic extension
+  - Seed counter and monitoring
+  - Fertilizer integration
+- **Chain Position**: Typically first in sequence after ground prep
+
+**2. Monitoring/Sensor Tools**
+- **Mounting**: Lightweight attachment to chain
+- **Components**:
+  - Multispectral cameras
+  - Moisture sensors
+  - Growth stage detection
+  - Disease/pest identification
+- **Chain Position**: Can be interspersed throughout sequence
+
+**3. Maintenance Tools**
+- **Watering Module**: Targeted irrigation delivery
+- **Fertilizer Applicator**: Precision nutrient placement
+- **Weeding System**: Mechanical or laser-based
+- **Pruning Tool**: For vine and bush crops
+- **Chain Position**: Scheduled based on crop needs
+
+**4. Harvesting Tools**
+
+**A. Low-Level Harvester** (for ground crops)
+- Pneumatic extension down to ground level
+- Cutting blade or pulling mechanism
+- Collection basket
+- Suitable for: lettuce, cabbage, root vegetables
+
+**B. Mid-Level Harvester** (for bush crops)
+- Adjustable height setting
+- Selective picking sensors
+- Gentle gripping mechanism
+- Suitable for: tomatoes, peppers, berries
+
+**C. High-Reach Harvester** (for tall crops)
+- Telescoping pole (up to 4m extension)
+- Various cutting heads available
+- Cushioned collection system
+- Suitable for: bananas, sugarcane, tree fruits
+
+**5. Transport/Collection Tool**
+- **Purpose**: Gathers harvested items from other tools
+- **Operation**: Follows behind harvesters in chain sequence
+- **Capacity**: 50-100kg collection bin
+- **Feature**: Auto-dump at row end into larger container
+
+#### Tool Sequencing Strategy
+
+The monopoly snake system requires careful planning of tool order. Here's an example sequence for a mature crop ready for harvest:
+
 ```
-     ╱╲
-    ╱  ╲  <- Adjustable angle (15-75°)
-   ╱    ╲
-  │  ██  │ <- Cutting/digging blade
-  │      │
-  └──────┘ <- Collection basket
+[Monitor] → [Empty] → [Harvester] → [Collector] → [Empty] → [Harvester] → [Collector]
 ```
-- Hydraulically adjustable penetration depth
-- Vibration system for soil loosening
-- Integrated collection mechanism
 
-**B. Telescopic Pole System** (for tall crops, tree fruits)
-```
-  ┌─────┐
-  │ ╱╲  │ <- Cutting head (various attachments)
-  │ ││  │
-  │ ││  │ <- Telescopic sections (0.5-6m reach)
-  │ ││  │
-  │ ││  │
-  └─┴┴──┘
-```
-- Multiple cutting head options:
-  - Diagonal blade for bananas
-  - Rotating cutter for sugarcane
-  - Soft gripper for delicate fruits
-  - Shaking mechanism for tree fruits
-
-**C. Collection and Transport Tool**
-- Travels along row using gear system
-- Collects harvested items
-- Transports to row end for packaging
-- Capacity: 50-200kg depending on configuration
-
-#### 5. Monitoring Tools
-**Sensor Package**
-- Multispectral cameras for crop health
-- Moisture sensors
-- Growth stage detection
-- Pest/disease identification
-- Yield prediction algorithms
+As this chain advances, the monitor checks each position, harvesters activate where needed, and collectors gather the harvest. The empty positions provide spacing for optimal timing.
 
 ## 🌍 Terrain and Configuration Adaptability
 
