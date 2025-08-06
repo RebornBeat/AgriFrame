@@ -61,12 +61,12 @@ The copyright holder reserves the right to offer alternative licensing terms in 
 future. For inquiries regarding licensing, partnerships, or any authorized use of
 the Work, please contact:
 
-[Your contact information here]
+admin@cibtac-defense.com
 
 GOVERNING LAW
 
 This notice shall be governed by and construed in accordance with the laws of
-[Your jurisdiction], without regard to its conflict of law provisions.
+Dominican Republic, without regard to its conflict of law provisions.
 
 ACKNOWLEDGMENT
 
