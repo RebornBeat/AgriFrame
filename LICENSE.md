@@ -1,5 +1,5 @@
 PROPRIETARY SOFTWARE LICENSE
-Copyright (c) 2025 AgriFrame Creator. All Rights Reserved.
+Copyright (c) 2025 RebornBeat All Rights Reserved.
 
 NOTICE: THIS IS PROPRIETARY SOFTWARE
 
