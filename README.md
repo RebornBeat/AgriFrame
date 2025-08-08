@@ -48,7 +48,7 @@ The system explores various structural possibilities:
 The research explores separation of ground-contact operations from above-ground operations, with tools operating on two independent systems.
 
 **Tool Categories Under Development:**
-- Ground preparation tools (side-mounted)
+- Ground preparation tools
 - Planting implements
 - Monitoring sensors
 - Maintenance equipment
