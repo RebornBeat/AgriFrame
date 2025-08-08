@@ -7,7 +7,17 @@ AgriFrame represents a revolutionary approach to agricultural automation through
 
 ## Core Innovation
 
-The fundamental innovation lies in recognizing that all agricultural planting patterns can be reduced to line-based geometries that can be serviced by an overhead framework system. By operating entirely above the crop area, the system eliminates soil compaction while enabling automation across diverse terrains and crop types.
+The fundamental innovation is the Intelligent Universal Frame, a modular system built from standardized, feature-rich bars. These bars are not merely structural; they are the enabling platform for automation. By recognizing that all agricultural planting patterns can be reduced to line-based geometries that can be serviced by an overhead framework system they transform any agricultural layout—from simple rows to complex contours—into a unified, machine-readable geometry.
+
+Key research areas for the Intelligent Bar include:
+
+    Universal Connection System: Designing standardized mounting points for both structural poles and operational tools.
+
+    Integrated Movement Interfaces: Embedding mechanisms like gear teeth, belt guides, or magnetic tracks directly into the bars to facilitate tool movement.
+
+    Inherent Modularity: Ensuring bars can connect in various configurations (linear, curved, hexagonal) to create any required field pattern.
+
+By operating entirely above the crop, this frame-based approach eliminates soil compaction while making advanced automation accessible to diverse terrains and crop types.
 
 ## System Architecture Research
 
