@@ -78,7 +78,6 @@ The research explores separation of ground-contact operations from above-ground 
 
 3. **Contour Systems**
    - Elevation-following designs
-   - No traditional corner structure
    - Terrace edge transfer points
    - Natural erosion prevention
 
@@ -307,5 +306,5 @@ AgriFrame represents a fundamental reimagining of agricultural mechanization, sh
 *This is a living document that will evolve as research progresses. All specifications, materials, and implementations described are subject to change based on ongoing findings and field testing.*
 
 **Version:** Research Phase 1.0  
-**Last Updated:** 2024  
+**Last Updated:** 2025 
 **Status:** Active Development
